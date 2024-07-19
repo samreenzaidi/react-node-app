@@ -1,5 +1,57 @@
-.product-tiles {
-    li{
+.plp-container {
+    .product-mini-outer-container {
+        min-height: 400px;
         list-style-type: none;
+        a {
+            text-decoration: none;
+            color: #000;
+            .save-for-later .icon.hover-sfl { 
+                display: none;
+            }
+
+            .primary-image {
+                padding: 3rem;
+            }
+
+            .atb-standard img {
+                width: 100%;
+            }
+    
+            .mini-image-container,
+            .mini-container {
+                position: relative;
+            }
+    
+            .add-to-bag-plp {
+                position: absolute;
+                bottom: -20px;
+                right: 0;
+                object-fit: contain;
+            }
+
+            .save-for-later {
+                padding: 0;
+                position: absolute;
+                right: .3125rem;
+                top: .3125rem;
+            }
+
+            .product-image-slider-outer-container {
+                background: #FBF9F9;
+            }
+
+            .price {
+                font-size: 16px;
+                font-weight: bold;
+                color: #191919;
+            }
+
+            .product-title {
+                a {
+                    font-size: 13px;
+                }
+            }
+        }
     }
 }
+

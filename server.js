@@ -2,7 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose') 
 const cors = require('cors') 
 const ObjectId = require('mongodb').ObjectId;
-const ProductModel = require("./models/productList") 
+const ProductModel = require("./models/product") 
 const uri = "mongodb+srv://shamazaidicool:Mocha%402016@clusterproduct.5eronvy.mongodb.net/?retryWrites=true&w=majority&appName=ClusterProduct"
   
 var app = express(); 
@@ -13,18 +13,18 @@ mongoose.connect(uri)
         .then(() => console.log('Connected to the database…')) 
         .catch((err) => console.error('Connection error:', err))
   
-app.get("/getProductList", (req, res) => { 
+app.get("/getProducts", (req, res) => { 
     ProductModel.find({}) 
-        .then((productList) => res.json(productList)) 
+        .then((products) => res.json(products)) 
         .catch((err) => res.json(err)) 
 }); 
 
-app.get("/getProductDetails/:id", (req, res) => { 
+app.get("/getProduct/:id", (req, res) => { 
     const query =  {
         _id: new ObjectId(req.params.id),
       };
     ProductModel.findOne(query)
-        .then((productdetails) => res.json(productdetails)) 
+        .then((product) => res.json(product)) 
         .catch((err) => res.json(err)) 
 }); 
   

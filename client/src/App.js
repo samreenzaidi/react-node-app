@@ -1,24 +1,26 @@
-import React from 'react'; 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
-import 'bootstrap/dist/css/bootstrap.min.css'; 
-import ProductList from './components/product/ProductList';
-import ProductDetails from './components/product/ProductDetails';
+import React, { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Header from "../src/components/common/Header"
+import Footer from "../src/components/common/Footer"
   
-  
+const Products = lazy(() => import("./components/product/Products")); 
+const Product = lazy(() => import("./components/product/Product")); 
+
 function App() { 
-  const headStyle = { 
-    textAlign: "center", 
-  } 
   return ( 
-    <div> 
-      <h1 style={headStyle}>Product List</h1> 
-      <BrowserRouter> 
-        <Routes> 
-        <Route path="/productlist" element={<ProductList />} />
-        <Route path="/productdetail/:productId" element={<ProductDetails />} />
-        </Routes> 
-      </BrowserRouter> 
-    </div> 
+    <>
+    <Header />
+    <BrowserRouter> 
+        <Suspense fallback={<div>Loading...</div>}>
+            <Routes> 
+                <Route path="/products" element={<Products />} />
+                <Route path="/product/:productId" element={<Product />} />
+            </Routes> 
+        </Suspense>
+    </BrowserRouter> 
+    <Footer />
+    </>
   ); 
 } 
   
