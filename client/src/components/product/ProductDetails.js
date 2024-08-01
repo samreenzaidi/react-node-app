@@ -3,11 +3,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react"; 
 import { useParams } from 'react-router-dom';
 
-function Product() { 
+function ProductDetails() { 
     const [product, setProduct] = useState([]); 
     const { productId } = useParams();
     useEffect(() => { 
-		axios.get(`http://localhost:3001/getProduct/${productId}`) 
+		axios.get(`http://localhost:5000/getProductDetails/${productId}`) 
 			.then(result => { 
 				setProduct(result.data) 
 			}) 
@@ -33,6 +33,6 @@ function Product() {
 		</div> 
 	) 
 } 
-export default Product;
+export default ProductDetails;
 
 

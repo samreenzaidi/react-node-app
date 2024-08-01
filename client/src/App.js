@@ -4,8 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Header from "../src/components/common/Header"
 import Footer from "../src/components/common/Footer"
   
-const Products = lazy(() => import("./components/product/Products")); 
-const Product = lazy(() => import("./components/product/Product")); 
+const ProductList = lazy(() => import("./components/product/ProductList")); 
+const ProductDetails = lazy(() => import("./components/product/ProductDetails")); 
 
 function App() { 
   return ( 
@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter> 
         <Suspense fallback={<div>Loading...</div>}>
             <Routes> 
-                <Route path="/products" element={<Products />} />
-                <Route path="/product/:productId" element={<Product />} />
+                <Route path="/products" element={<ProductList />} />
+                <Route path="/product/:productId" element={<ProductDetails />} />
             </Routes> 
         </Suspense>
     </BrowserRouter> 
