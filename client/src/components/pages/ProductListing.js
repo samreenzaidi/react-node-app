@@ -1,11 +1,14 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 import '../../scss/product.scss'
-import ProductItem from "./ProductItem"
+import ProductItem from "../containers/ProductItem"
+import { addItemToCartAction } from "../redux/action/CartAction"
+import { useDispatch } from "react-redux"
 
-function ProductList() { 
+const ProductListing = () => {
 	const [products, setProducts] = useState([])
 	const [cartItems, setCartItems] = useState([]); 
+	const dispatch = useDispatch();
 	
 	useEffect(() => { 
 		axios.get('http://localhost:5000/getProductList') 
@@ -21,6 +24,7 @@ function ProductList() {
 		axios.post('http://localhost:5000/addToCart', { title, description, category, price, stock, sku, images, thumbnail }) 
 			.then(result => { 
 				setCartItems(result.data) 
+				dispatch(addItemToCartAction(cartItems))
 			}) 
 			.catch(err => console.log(err)) 
 	})
@@ -39,4 +43,4 @@ function ProductList() {
 		</div> 
 	) 
 } 
-export default ProductList;
+export default ProductListing;

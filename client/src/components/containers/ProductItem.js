@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import '../../scss/product.scss'
 
-function ProductList({product, addToCart}) { 
+const ProductList = ({product, addToCart}) => {
 	return ( 
-		<li className="col-md-3 product-mini-outer-container">
+		<li className="col-md-3 product-mini-outer-container" id={`productId-${product._id}`}>
 			<Link to={{ pathname: `/product/${product._id}` }}>
 			<div className="product-mini">
 				<div className="mini-container">

@@ -8,3 +8,16 @@
     justify-content: end;
     align-self: center;
 }
+
+.cart-qty-cricle {
+    position: absolute;
+    border: 1px solid;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    background: #ff0000;
+    color: #fff;
+    text-align: center;
+    font-size: 9px;
+    border-color: #ff0000;
+}
