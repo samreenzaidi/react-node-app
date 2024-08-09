@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './scss/global.scss'
 import Header from "../src/components/common/Header"
 import Footer from "../src/components/common/Footer"
   

@@ -1,12 +1,28 @@
-import axios from "axios"; 
-import React from "react"; 
-import { useEffect, useState } from "react"; 
+import React, { useState, useEffect } from "react"; 
 import { Link } from "react-router-dom";
 import '../../scss/product.scss'
+import QuickBuy from "./QuickBuy";
+import { useDispatch } from "react-redux";
+import { toggleQBModalAction } from "../redux/action/QBModalAction"
 
-const ProductList = ({product, addToCart}) => {
+const ProductItem = ({product}) => {   
+	const [showQuickBuyModal, setShowQuickBuyModal] = useState(); 
+	const dispatch = useDispatch();
+
+	const openQuickBuyModal = (e) => {
+		e.preventDefault()
+		setShowQuickBuyModal(true)
+		dispatch(toggleQBModalAction(true))
+	}
+
+	useEffect(() => {
+		console.log("changed")
+	 }, 
+    []) 
+
 	return ( 
 		<li className="col-md-3 product-mini-outer-container" id={`productId-${product._id}`}>
+			{showQuickBuyModal && <QuickBuy product={product}/>}
 			<Link to={{ pathname: `/product/${product._id}` }}>
 			<div className="product-mini">
 				<div className="mini-container">
@@ -17,7 +33,7 @@ const ProductList = ({product, addToCart}) => {
 								<img className="primary-image" src={product.images[0]} alt="Blue Striped Lemon Fresh Start T-Shirt" title="Blue Striped Lemon Fresh Start T-Shirt" width="" height="305"/>
 							</picture>
 						</div>
-						<div className="add-to-bag-plp" focusable="true" tabIndex="0" onClick={addToCart}>
+						<div className="add-to-bag-plp" focusable="true" tabIndex="0" onClick={(e) => openQuickBuyModal(e)}>
 							<div aria-label={"Add to cart" + " " + product.title} tabIndex="0" role="button" className="atb-initial atb-clickable">
 								<div className="atb-standard"><img src="https://global.direct.asda.com/on/demandware.static/-/Library-Sites-ASDAShared/default/v1721359331266/CommonSVG/quick-buy.svg" width="40" height="40" alt="Quick Buy Icon"/></div>
 							</div>
@@ -49,4 +65,4 @@ const ProductList = ({product, addToCart}) => {
 		</li>
 	) 
 } 
-export default ProductList;
+export default ProductItem;

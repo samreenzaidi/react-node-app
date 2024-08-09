@@ -26,7 +26,7 @@ const ProductDetails = () => {
 					<h5 className="product-name">{product.title}</h5>
 					<p className="product-desc">{product.description}</p>
 					<p className="product-price"><b>${product.price}.00</b></p>
-					<button type="button" class="btn btn-dark" data-mdb-ripple-init>Add to cart</button>
+					<button type="button" className="btn btn-dark">Add to cart</button>
 				</div>
 			</div>
 			

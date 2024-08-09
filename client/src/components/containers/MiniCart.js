@@ -1,11 +1,8 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import '../../scss/header.scss'
-import { useSelector } from "react-redux";
 
-const Header = () => {
-  const totalCartQty = useSelector((state) => state.totalCartQty);
+const MiniCart = () => {
+  const totalCartQty = useSelector((state) => state.cartData.totalCartQty);
   return ( 
     <>
       <div className="header-container bg-light">
@@ -29,4 +26,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default MiniCart;
