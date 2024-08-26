@@ -7,7 +7,7 @@ const CartItemModel = require("./models/CartItem")
 const uri = "mongodb+srv://shamazaidicool:Mocha%402016@clusterproduct.5eronvy.mongodb.net/?retryWrites=true&w=majority&appName=ClusterProduct"
   
 var app = express(); 
-app.listen(5000, () => console.log('Server running on 5000'))
+app.listen(9000, () => console.log('Server running on 9000'))
 app.use(cors()); 
 app.use(express.json()); 
 

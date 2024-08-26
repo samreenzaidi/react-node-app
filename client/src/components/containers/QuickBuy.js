@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import '../../scss/product.scss'
 import { addItemToCartAction } from "../redux/action/CartAction"
 import { toggleQBModalAction } from "../redux/action/QBModalAction"
-import { useDispatch } from "react-redux"
+import { useDispatch, connect } from "react-redux"
 
 const QuickBuy = ({product}) => {
     const [cartItems, setCartItems] = useState([]); 
@@ -106,4 +106,9 @@ const QuickBuy = ({product}) => {
         </div>
 	) 
 } 
+
+function mapStateToProps(state) {
+    const { toggleQBModal } = state
+    return toggleQBModal
+}
 export default connect(mapStateToProps)(QuickBuy)
