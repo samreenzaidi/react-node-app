@@ -2,27 +2,30 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../../scss/product.scss'
 import QuickBuy from "./QuickBuy";
-import { useDispatch } from "react-redux";
-import { toggleQBModalAction } from "../redux/action/QBModalAction"
 
 const ProductItem = ({product}) => {   
-	const [showQuickBuyModal, setShowQuickBuyModal] = useState(); 
-	const dispatch = useDispatch();
+	const [showQuickBuyModal, setShowQuickBuyModal] = useState(false); 
 
 	const openQuickBuyModal = (e) => {
 		e.preventDefault()
 		setShowQuickBuyModal(true)
-		dispatch(toggleQBModalAction(true))
 	}
 
+	const closeQuickBuyModal = () => {
+		setShowQuickBuyModal(false)
+    } 
+
 	useEffect(() => {
-		console.log("changed")
-	 }, 
-    []) 
+		document.onclick = (args) => {
+            if (args.target.id === 'modal') {
+                setShowQuickBuyModal(false)
+            }
+        };
+	}, [showQuickBuyModal]);
 
 	return ( 
 		<li className="col-md-3 product-mini-outer-container" id={`productId-${product._id}`}>
-			{showQuickBuyModal && <QuickBuy product={product}/>}
+			{showQuickBuyModal && <QuickBuy product={product} closeQuickBuyModal={closeQuickBuyModal}/>}
 			<Link to={{ pathname: `/product/${product._id}` }}>
 			<div className="product-mini">
 				<div className="mini-container">

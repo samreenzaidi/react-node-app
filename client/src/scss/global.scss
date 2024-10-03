@@ -5,7 +5,7 @@
     left: 0;
     overflow: auto;
     padding-top: 6.25rem;
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     z-index: 9998;
@@ -79,6 +79,10 @@
                   flex: 1;
                   margin: 0;
                   max-width: 8.125rem;
+                  .quantity-selector__disabled{
+                    color: #cbcbcb;
+                    cursor: not-allowed;
+                  }
                   .quantity-selector__button {
                     cursor: pointer;
                     display: block;

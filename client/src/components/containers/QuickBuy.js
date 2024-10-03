@@ -2,11 +2,11 @@ import axios from "axios"
 import React, { useState, useEffect } from "react"
 import '../../scss/product.scss'
 import { addItemToCartAction } from "../redux/action/CartAction"
-import { toggleQBModalAction } from "../redux/action/QBModalAction"
-import { useDispatch, connect } from "react-redux"
+import { useDispatch } from "react-redux"
 
-const QuickBuy = ({product}) => {
+const QuickBuy = ({product, closeQuickBuyModal}) => {
     const [cartItems, setCartItems] = useState([]); 
+    const [qty, setQty] = useState(0)
     const {title, description, category, price, stock, sku, images, thumbnail} = product
     const dispatch = useDispatch();
 
@@ -20,9 +20,13 @@ const QuickBuy = ({product}) => {
         }, 
     []) 
 
-    const closeQuickBuyModal = () => {
-        dispatch(toggleQBModalAction(false))
-    } 
+    const decrementQty = () => {
+        setQty(qty - 1)
+    }
+
+    const incrementQty = () => {
+        setQty(qty + 1)
+    }
        
 	return ( 
         <div className="quick-buy-modal" id="modal">
@@ -51,7 +55,7 @@ const QuickBuy = ({product}) => {
                                     <div className="product-attribute-selector" data-id="attribute-selector-container" data-cs-override-id="attribute-selector-container">
                                         <span className="selector-name" data-id="attribute-selector-label" data-cs-override-id="attribute-selector-label">Size</span>
                                         <div className="attribute-wrapper grid__list columns-number-4" role="radiogroup">
-                                            <div className="attribute selected" data-id="button-attribute-selector-size" data-cs-override-id="button-attribute-selector-size" tabindex="0" role="button" aria-label="Size - 4-8  selected">
+                                            <div className="attribute selected" data-id="button-attribute-selector-size" data-cs-override-id="button-attribute-selector-size" tabIndex="0" role="button" aria-label="Size - 4-8  selected">
                                                 <span role="icon" name="tick" className="icon"></span>
                                                 <span data-id="attribute-selector-value" data-cs-override-id="attribute-selector-value">4-8</span>
                                             </div>
@@ -64,15 +68,15 @@ const QuickBuy = ({product}) => {
                             <div className="add-to-bag-container">
                                 <div className="quantity-selector__wrapper">
                                     <div className="quantity-selector__controls">
-                                        <div data-id="button-decrement-quantity-plp-quick-buy" data-cs-override-id="button-decrement-quantity-plp-quick-buy" tabindex="0" role="button" aria-label="decrement quantity" className="quantity-selector__button quantity-selector__disabled" aria-hidden="true">-</div>
+                                        <div tabIndex="0" role="button" aria-label="decrement quantity" className={"quantity-selector__button" + " " + ((qty == 0) ? "quantity-selector__disabled" : "")} aria-hidden="true" onClick={decrementQty}>-</div>
                                         <div className="quantity-selector__field">
-                                            <input readonly="" aria-label="Current quantity is ,1," type="text" data-id="field-selector-quantity-plp-quick-buy" data-cs-override-id="field-selector-quantity-plp-quick-buy" value="1"/>
+                                            <input aria-label="Current quantity is ,1," type="text" value={qty}/>
                                         </div>
-                                        <div data-id="button-increment-quantity-plp-quick-buy" data-cs-override-id="button-increment-quantity-plp-quick-buy" tabindex="0" role="button" aria-label="increment quantity" className="quantity-selector__button" aria-hidden="false">+</div>
+                                        <div tabIndex="0" role="button" aria-label="increment quantity" className="quantity-selector__button" aria-hidden="false" onClick={incrementQty}>+</div>
                                     </div>
                                 </div>
                                 <div className="add-to-bag-button-wrapper">
-                                    <button data-id="button-addtobag-button-quick-buy-atb" data-cs-override-id="button-addtobag-button-quick-buy-atb" aria-label="Add to basket" aria-controls="" aria-setsize="" aria-posinset="" aria-hidden="false" role="button" tabindex="0" id="zca611vfka" type="button" className="btn btn-primary btn-default add-to add-to-bag">Add to basket</button>
+                                    <button data-id="button-addtobag-button-quick-buy-atb" data-cs-override-id="button-addtobag-button-quick-buy-atb" aria-label="Add to basket" aria-controls="" aria-setsize="" aria-posinset="" aria-hidden="false" role="button" tabIndex="0" id="zca611vfka" type="button" className="btn btn-primary btn-default add-to add-to-bag">Add to basket</button>
                                 </div>
                             </div>
                         </div>
@@ -83,8 +87,4 @@ const QuickBuy = ({product}) => {
 	) 
 } 
 
-function mapStateToProps(state) {
-    const { toggleQBModal } = state
-    return toggleQBModal
-}
-export default connect(mapStateToProps)(QuickBuy)
+export default QuickBuy
