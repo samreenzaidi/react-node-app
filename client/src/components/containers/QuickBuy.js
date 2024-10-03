@@ -48,22 +48,6 @@ const QuickBuy = ({product, closeQuickBuyModal}) => {
                                 <div className="quick-buy-badges"></div>
                             </div>
                         </div>
-                        {/* <div className="quick-buy-content">
-                            <div className="attribute-group">
-                                <div className="attribute-group--title"><span className="bold">Size: </span>4-8</div>
-                                <div className="attributes-wrapper">
-                                    <div className="product-attribute-selector" data-id="attribute-selector-container" data-cs-override-id="attribute-selector-container">
-                                        <span className="selector-name" data-id="attribute-selector-label" data-cs-override-id="attribute-selector-label">Size</span>
-                                        <div className="attribute-wrapper grid__list columns-number-4" role="radiogroup">
-                                            <div className="attribute selected" data-id="button-attribute-selector-size" data-cs-override-id="button-attribute-selector-size" tabIndex="0" role="button" aria-label="Size - 4-8  selected">
-                                                <span role="icon" name="tick" className="icon"></span>
-                                                <span data-id="attribute-selector-value" data-cs-override-id="attribute-selector-value">4-8</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
                         <div className="quick-buy-footer">
                             <div className="add-to-bag-container">
                                 <div className="quantity-selector__wrapper">
@@ -76,7 +60,7 @@ const QuickBuy = ({product, closeQuickBuyModal}) => {
                                     </div>
                                 </div>
                                 <div className="add-to-bag-button-wrapper">
-                                    <button data-id="button-addtobag-button-quick-buy-atb" data-cs-override-id="button-addtobag-button-quick-buy-atb" aria-label="Add to basket" aria-controls="" aria-setsize="" aria-posinset="" aria-hidden="false" role="button" tabIndex="0" id="zca611vfka" type="button" className="btn btn-primary btn-default add-to add-to-bag">Add to basket</button>
+                                    <button aria-label="Add to basket" aria-controls="" aria-setsize="" aria-posinset="" aria-hidden="false" role="button" tabIndex="0" type="button" className={"btn btn-primary btn-default add-to add-to-bag" + " " + ((qty == 0) ? "add-to-bag__disabled" : "")}>Add to basket</button>
                                 </div>
                             </div>
                         </div>

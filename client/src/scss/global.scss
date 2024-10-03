@@ -120,6 +120,11 @@
               }
               .add-to-bag-button-wrapper {
                 margin-left: 0.5rem;
+                .add-to-bag__disabled{
+                  cursor: not-allowed;
+                  background-color: #cbcbcb;
+                  background-image: none;
+                }
                 button {
                   min-height: 2.5625rem;
                   width: 100%;
