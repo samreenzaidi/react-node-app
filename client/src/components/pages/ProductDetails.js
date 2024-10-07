@@ -1,13 +1,15 @@
 
-import axios from "axios"; 
-import React, { useEffect, useState } from "react"; 
-import { useParams } from 'react-router-dom';
+import axios from "axios"
+import { useEffect, useState } from "react"
+import { useParams } from 'react-router-dom'
+import AddItemToCart from "../containers/AddItemToCart"
 
 const ProductDetails = () => {
-    const [product, setProduct] = useState([]); 
-    const { productId } = useParams();
+    const [product, setProduct] = useState([])
+    const { productSKU } = useParams()
+
     useEffect(() => { 
-		axios.get(`http://localhost:5000/getProductDetails/${productId}`) 
+		axios.get(`http://localhost:5000/getProductDetails/${productSKU}`) 
 			.then(result => { 
 				setProduct(result.data) 
 			}) 
@@ -26,7 +28,7 @@ const ProductDetails = () => {
 					<h5 className="product-name">{product.title}</h5>
 					<p className="product-desc">{product.description}</p>
 					<p className="product-price"><b>${product.price}.00</b></p>
-					<button type="button" className="btn btn-dark">Add to cart</button>
+					<AddItemToCart product={product} />
 				</div>
 			</div>
 			

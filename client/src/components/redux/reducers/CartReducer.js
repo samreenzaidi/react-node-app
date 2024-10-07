@@ -5,13 +5,13 @@ const initialState = {
   
 const CartReducer = (state = initialState, action) => {
     switch (action.type) {
-      case 'ADD_ITEM_TO_CART':
+      case 'ITEM_ADDED_TO_CART':
         return {
           cartItems: [...state.cartItems, action.payload],
           totalCartQty: state.totalCartQty + 1
         }
     }
-      
+    console.log(action.payload)
     return state;
   };
 

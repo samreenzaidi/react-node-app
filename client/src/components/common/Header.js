@@ -5,7 +5,7 @@ import '../../scss/header.scss'
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const totalCartQty = useSelector((state) => state.totalCartQty);
+  const totalCartQty = useSelector((state) => state.CartItems.totalCartQty);
   return ( 
     <>
       <div className="header-container bg-light">

@@ -25,8 +25,8 @@ const ProductItem = ({product}) => {
 
 	return ( 
 		<li className="col-md-3 product-mini-outer-container" id={`productId-${product._id}`}>
-			{showQuickBuyModal && <QuickBuy product={product} closeQuickBuyModal={closeQuickBuyModal}/>}
-			<Link to={{ pathname: `/product/${product._id}` }}>
+			{showQuickBuyModal && <QuickBuy product={product} closeQuickBuyModalEvent={closeQuickBuyModal}/>}
+			<Link to={{ pathname: `/product/${product.sku}` }}>
 			<div className="product-mini">
 				<div className="mini-container">
 					<div className="mini-image-container">

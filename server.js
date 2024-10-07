@@ -22,9 +22,7 @@ app.get("/getProductList", (req, res) => {
 }); 
 
 app.get("/getProductDetails/:id", (req, res) => { 
-    const query =  {
-        _id: new ObjectId(req.params.id),
-      };
+    const query = {sku : req.params.id}
     ProductModel.findOne(query)
         .then((result) => res.json(result)) 
         .catch((err) => res.json(err)) 
@@ -32,12 +30,12 @@ app.get("/getProductDetails/:id", (req, res) => {
 
 app.post("/addToCart", (req, res) => { 
     CartItemModel.create({ 
+        sku: req.body.sku,
+        category: req.body.category,  
         title: req.body.title, 
         description: req.body.description, 
-        category: req.body.category,  
         price: req.body.price, 
         stock: req.body.stock, 
-        sku: req.body.sku,
         images: req.body.images, 
         thumbnail: req.body.thumbnail 
     }) 
