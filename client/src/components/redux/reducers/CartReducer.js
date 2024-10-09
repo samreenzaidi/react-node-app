@@ -11,7 +11,6 @@ const CartReducer = (state = initialState, action) => {
           totalCartQty: state.totalCartQty + 1
         }
     }
-    console.log(action.payload)
     return state;
   };
 

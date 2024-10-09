@@ -3,6 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
 import AddItemToCart from "../containers/AddItemToCart"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 
 const ProductDetails = () => {
     const [product, setProduct] = useState([])
@@ -21,7 +22,7 @@ const ProductDetails = () => {
 			<div className="row">
 				<div className="col-md-6">
 					<div className="card-image">
-						<img src={product?.images} alt="" style={{width: "100%", height: "100%"}}/>
+						<LazyLoadImage src={product?.images} alt="" style={{width: "100%", height: "100%"}}/>
 					</div>
 				</div>
 				<div className="col-md-6">

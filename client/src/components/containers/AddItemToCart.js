@@ -32,7 +32,7 @@ const useAddItemToCart = ({product, closeQuickBuyModalEventCall}) => {
                 <div className="quantity-selector__controls">
                     <div tabIndex="0" role="button" aria-label="decrement quantity" className={"quantity-selector__button" + " " + ((qty == 0) ? "quantity-selector__disabled" : "")} aria-hidden="true" onClick={decrementItemQty}>-</div>
                     <div className="quantity-selector__field">
-                        <input aria-label="Current quantity is ,1," type="text" value={qty}/>
+                        <input aria-label="Current quantity is ,1," type="text" value={qty} readOnly/>
                     </div>
                     <div tabIndex="0" role="button" aria-label="increment quantity" className="quantity-selector__button" aria-hidden="false" onClick={incrementItemQty}>+</div>
                 </div>

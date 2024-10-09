@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"; 
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react" 
+import { Link } from "react-router-dom"
 import '../../scss/product.scss'
-import QuickBuy from "./QuickBuy";
+import QuickBuy from "./QuickBuy"
+import { LazyLoadImage } from "react-lazy-load-image-component"
 
 const ProductItem = ({product}) => {   
 	const [showQuickBuyModal, setShowQuickBuyModal] = useState(false); 
@@ -33,7 +34,7 @@ const ProductItem = ({product}) => {
 						<div className="product-image-slider-outer-container">
 							<picture>
 								<source srcSet={product.images[0]} type="image/webp"/>
-								<img className="primary-image" src={product.images[0]} alt="Blue Striped Lemon Fresh Start T-Shirt" title="Blue Striped Lemon Fresh Start T-Shirt" width="" height="305"/>
+								<LazyLoadImage className="primary-image" src={product.images[0]} alt="Blue Striped Lemon Fresh Start T-Shirt" title="Blue Striped Lemon Fresh Start T-Shirt" width="" height="305"/>
 							</picture>
 						</div>
 						<div className="add-to-bag-plp" focusable="true" tabIndex="0" onClick={(e) => openQuickBuyModal(e)}>
