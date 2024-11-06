@@ -1,7 +1,7 @@
-import axios from "axios"
-import React, { useEffect, useState } from "react"
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import '../../scss/product.scss'
-import ProductItem from "../containers/ProductItem"
+import ProductItem from '../containers/ProductItem'
 
 const ProductListing = () => {
 	const [products, setProducts] = useState([])
@@ -15,9 +15,9 @@ const ProductListing = () => {
 	}, []) 
 
 	return ( 
-		<div className="container plp-container mt-5"> 
+		<div className='container plp-container mt-5'> 
 			{Array.isArray(products) ? ( 
-				<ul className="row product-list"> 
+				<ul className='row product-list'> 
 					{products.map((product) => ( 
 						<ProductItem key={product._id}  product={product} />
 					))} 
@@ -28,4 +28,4 @@ const ProductListing = () => {
 		</div> 
 	) 
 } 
-export default ProductListing;
+export default ProductListing

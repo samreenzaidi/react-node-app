@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose') 
   
 const cartItemSchema = new mongoose.Schema({
     title: String, 
@@ -9,6 +9,6 @@ const cartItemSchema = new mongoose.Schema({
     sku: String,
     images: Array, 
     thumbnail: String
-});
+})
   
-module.exports = mongoose.model("CartItem", cartItemSchema)
+module.exports = mongoose.model('CartItem', cartItemSchema)

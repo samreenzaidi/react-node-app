@@ -2,11 +2,12 @@ import React, { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './scss/global.scss'
-import Header from "../src/components/common/Header"
-import Footer from "../src/components/common/Footer"
+import Header from '../src/components/common/Header'
+import Footer from '../src/components/common/Footer'
+import Cart from './components/pages/Cart'
   
-const ProductListing = lazy(() => import("./components/pages/ProductListing")); 
-const ProductDetails = lazy(() => import("./components/pages/ProductDetails")); 
+const ProductListing = lazy(() => import('./components/pages/ProductListing')) 
+const ProductDetails = lazy(() => import('./components/pages/ProductDetails')) 
 
 function App() { 
   return ( 
@@ -15,14 +16,15 @@ function App() {
     <BrowserRouter> 
         <Suspense fallback={<div>Loading...</div>}>
             <Routes> 
-                <Route path="/products" element={<ProductListing />} />
-                <Route path="/product/:productSKU" element={<ProductDetails />} />
+                <Route path='/products' element={<ProductListing />} />
+                <Route path='/product/:productSKU' element={<ProductDetails />} />
+                <Route path='/cart' element={<Cart />} />
             </Routes> 
         </Suspense>
     </BrowserRouter> 
     <Footer />
     </>
-  ); 
+  ) 
 } 
   
-export default App;
+export default App

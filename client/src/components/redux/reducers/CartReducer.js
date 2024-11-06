@@ -1,7 +1,7 @@
 const initialState = {
     cartItems: [],
     totalCartQty: 0
-};
+}
   
 const CartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -11,7 +11,7 @@ const CartReducer = (state = initialState, action) => {
           totalCartQty: state.totalCartQty + 1
         }
     }
-    return state;
-  };
+    return state
+  }
 
-  export default CartReducer;
+  export default CartReducer
